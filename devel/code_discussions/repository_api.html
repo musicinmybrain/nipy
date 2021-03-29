@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neuroimaging in Python &#8212; NIPY Documentation</title>
+    <link rel="stylesheet" href="../../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="What would pipelining look like?" href="pipelining_api.html" />
+    <link rel="prev" title="Can NIPY get something interesting from BrainVISA databases?" href="brainvisa_repositories.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head><body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../../index.html">
+  <img src="../../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pipelining_api.html" title="What would pipelining look like?"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="brainvisa_repositories.html" title="Can NIPY get something interesting from BrainVISA databases?"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >Developer Guide</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">Code discussions</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../../documentation.html">Documentation</a></li>
+    <li><a href="../index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/project-directory">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+    <li><a class="reference external"
+	href="license.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="brainvisa_repositories.html"
+                        title="previous chapter">Can NIPY get something interesting from BrainVISA databases?</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pipelining_api.html"
+                        title="next chapter">What would pipelining look like?</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/devel/code_discussions/repository_api.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="repository-api">
+<span id="id1"></span><h1>Repository API<a class="headerlink" href="#repository-api" title="Permalink to this headline">¶</a></h1>
+<p>See also <a class="reference internal" href="repository_design.html#repository-design"><span class="std std-ref">Repository design</span></a> and <a class="reference internal" href="brainvisa_repositories.html#brainvisa-repositories"><span class="std std-ref">Can NIPY get something interesting from BrainVISA databases?</span></a></p>
+<p>FMRI datasets often have the structure:</p>
+<ul class="simple">
+<li><p>Group (sometimes) e.g. Patients, Controls</p>
+<ul>
+<li><p>Subject e.g. Subject1, Subject2</p>
+<ul>
+<li><p>Session e.g. Sess1, Sess1</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>How about an interface like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">repo</span> <span class="o">=</span> <span class="n">GSSRespository</span><span class="p">(</span>
+    <span class="n">root_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/me/data/experiment1&#39;</span><span class="p">,</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;patients&#39;</span><span class="p">:</span>
+              <span class="p">{</span><span class="s1">&#39;subjects&#39;</span><span class="p">:</span>
+               <span class="p">{</span><span class="s1">&#39;patient1&#39;</span><span class="p">:</span>
+                <span class="p">{</span><span class="s1">&#39;sess1&#39;</span><span class="p">:</span>
+                 <span class="s1">&#39;filter&#39;</span><span class="p">:</span> <span class="s1">&#39;raw*nii&#39;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s1">&#39;sess2&#39;</span><span class="p">:</span>
+                 <span class="s1">&#39;filter&#39;</span><span class="p">:</span> <span class="s1">&#39;raw*nii&#39;</span><span class="p">}</span>
+                <span class="p">},</span>
+               <span class="p">{</span><span class="s1">&#39;patient2&#39;</span><span class="p">:</span>
+                <span class="p">{</span><span class="s1">&#39;sess1&#39;</span><span class="p">:</span>
+                 <span class="s1">&#39;filter&#39;</span><span class="p">:</span> <span class="s1">&#39;raw*nii&#39;</span><span class="p">}</span>
+                <span class="p">{</span><span class="s1">&#39;sess2&#39;</span><span class="p">:</span>
+                 <span class="s1">&#39;filter&#39;</span><span class="p">:</span> <span class="s1">&#39;raw*nii&#39;</span><span class="p">}</span>
+                <span class="p">}</span>
+               <span class="p">},</span>
+              <span class="s1">&#39;controls&#39;</span><span class="p">:</span>
+              <span class="p">{</span><span class="s1">&#39;subjects&#39;</span><span class="p">:</span>
+               <span class="p">{</span><span class="s1">&#39;control1&#39;</span><span class="p">:</span>
+                <span class="p">{</span><span class="s1">&#39;sess1&#39;</span><span class="p">:</span>
+                 <span class="s1">&#39;filter&#39;</span><span class="p">:</span> <span class="s1">&#39;raw*nii&#39;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s1">&#39;sess2&#39;</span><span class="p">:</span>
+                 <span class="s1">&#39;filter&#39;</span><span class="p">:</span> <span class="s1">&#39;raw*nii&#39;</span><span class="p">}</span>
+                <span class="p">},</span>
+               <span class="p">{</span><span class="s1">&#39;control2&#39;</span><span class="p">:</span>
+                <span class="p">{</span><span class="s1">&#39;sess1&#39;</span><span class="p">:</span>
+                 <span class="s1">&#39;filter&#39;</span><span class="p">:</span> <span class="s1">&#39;raw*nii&#39;</span><span class="p">}</span>
+                <span class="p">{</span><span class="s1">&#39;sess2&#39;</span><span class="p">:</span>
+                 <span class="s1">&#39;filter&#39;</span><span class="p">:</span> <span class="s1">&#39;raw*nii&#39;</span><span class="p">}</span>
+                <span class="p">}</span>
+               <span class="p">}</span>
+              <span class="p">})</span>
+
+<span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">groups</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">subjects</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">session</span> <span class="ow">in</span> <span class="n">subject</span><span class="o">.</span><span class="n">sessions</span><span class="p">:</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">image</span>
+            <span class="c1"># do something with image</span>
+</pre></div>
+</div>
+<p>We would need to think about adding metadata such as behavioral data
+from the scanning session, and so on.  I suppose this will help us
+move transparently to using something like HDF5 for data storage.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pipelining_api.html" title="What would pipelining look like?"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="brainvisa_repositories.html" title="Can NIPY get something interesting from BrainVISA databases?"
+             >previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >Developer Guide</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >Code discussions</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2005-2021, Neuroimaging in Python team.
+      Last updated on Mar 29, 2021.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

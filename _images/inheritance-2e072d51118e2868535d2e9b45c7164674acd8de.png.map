@@ -1,0 +1,9 @@
+<map id="inheritancea2fe1494e6" name="inheritancea2fe1494e6">
+<area shape="rect" id="node1" href="#nipy.algorithms.registration.affine.Affine" target="_top" title="registration.affine.Affine" alt="" coords="224,47,360,69"/>
+<area shape="rect" id="node3" href="#nipy.algorithms.registration.affine.Affine2D" target="_top" title="registration.affine.Affine2D" alt="" coords="403,5,553,26"/>
+<area shape="rect" id="node4" href="#nipy.algorithms.registration.affine.Rigid" target="_top" title="registration.affine.Rigid" alt="" coords="411,47,544,69"/>
+<area shape="rect" id="node6" href="#nipy.algorithms.registration.affine.Similarity" target="_top" title="registration.affine.Similarity" alt="" coords="401,89,554,111"/>
+<area shape="rect" id="node2" href="nipy.algorithms.registration.transform.html#nipy.algorithms.registration.transform.Transform" target="_top" title="A default transformation class" alt="" coords="5,47,183,69"/>
+<area shape="rect" id="node5" href="#nipy.algorithms.registration.affine.Rigid2D" target="_top" title="registration.affine.Rigid2D" alt="" coords="606,47,753,69"/>
+<area shape="rect" id="node7" href="#nipy.algorithms.registration.affine.Similarity2D" target="_top" title="registration.affine.Similarity2D" alt="" coords="595,89,763,111"/>
+</map>

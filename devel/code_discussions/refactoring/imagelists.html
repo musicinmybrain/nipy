@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neuroimaging in Python &#8212; NIPY Documentation</title>
+    <link rel="stylesheet" href="../../../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Software Design" href="../comparisons/index.html" />
+    <link rel="prev" title="Defining use cases" href="index.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head><body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../../../index.html">
+  <img src="../../../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../comparisons/index.html" title="Software Design"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Defining use cases"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../index.html" >Developer Guide</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../index.html" >Code discussions</a> &#187;</li>
+          <li class="nav-item nav-item-4"><a href="index.html" accesskey="U">Defining use cases</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../../../documentation.html">Documentation</a></li>
+    <li><a href="../../index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/project-directory">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+    <li><a class="reference external"
+	href="license.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h3><a href="../../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Refactoring imagelists</a><ul>
+<li><a class="reference internal" href="#usecases-for-imagelist">Usecases for ImageList</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Defining use cases</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../comparisons/index.html"
+                        title="next chapter">Software Design</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/devel/code_discussions/refactoring/imagelists.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="refactoring-imagelists">
+<h1>Refactoring imagelists<a class="headerlink" href="#refactoring-imagelists" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="usecases-for-imagelist">
+<h2>Usecases for ImageList<a class="headerlink" href="#usecases-for-imagelist" title="Permalink to this headline">¶</a></h2>
+<p>Thus far only used in anger in
+<a class="reference internal" href="../../../api/generated/nipy.modalities.fmri.fmristat.model.html#module-nipy.modalities.fmri.fmristat.model" title="nipy.modalities.fmri.fmristat.model"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nipy.modalities.fmri.fmristat.model</span></code></a>, similarly in
+<a class="reference internal" href="../../../api/generated/nipy.modalities.fmri.spm.model.html#module-nipy.modalities.fmri.spm.model" title="nipy.modalities.fmri.spm.model"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nipy.modalities.fmri.spm.model</span></code></a>.</p>
+<p>From that file, an object <code class="docutils literal notranslate"><span class="pre">obj</span></code> of class <code class="xref py py-class docutils literal notranslate"><span class="pre">FmriImageList</span></code> must:</p>
+<ul class="simple">
+<li><p>return 4D array from <code class="docutils literal notranslate"><span class="pre">np.asarray(obj)</span></code>, such that the first axis
+(axis 0) is the axis over which the model is applied</p></li>
+<li><p>be indexable such that <code class="docutils literal notranslate"><span class="pre">obj[0]</span></code> returns an Image instance, with
+valid <code class="docutils literal notranslate"><span class="pre">shape</span></code> and <code class="docutils literal notranslate"><span class="pre">coordmap</span></code> attributes for a time-point 3D volume
+in the 4D time-series.</p></li>
+<li><p>have an attribute <code class="docutils literal notranslate"><span class="pre">volume_start_times</span></code> giving times of the start of
+each of the volumes in the 4D time series.</p></li>
+<li><p>Return the number of volumes in the time-series from <code class="docutils literal notranslate"><span class="pre">len(obj)</span></code></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../comparisons/index.html" title="Software Design"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Defining use cases"
+             >previous</a> |</li>
+  <li><a href="../../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../index.html" >Developer Guide</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../index.html" >Code discussions</a> &#187;</li>
+          <li class="nav-item nav-item-4"><a href="index.html" >Defining use cases</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2005-2021, Neuroimaging in Python team.
+      Last updated on Mar 29, 2021.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neuroimaging in Python &#8212; NIPY Documentation</title>
+    <link rel="stylesheet" href="../../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Debugging" href="debugging.html" />
+    <link rel="prev" title="Commit message codes" href="commit_codes.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head><body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../../index.html">
+  <img src="../../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="debugging.html" title="Debugging"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="commit_codes.html" title="Commit message codes"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >Developer Guide</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">Development Guidelines</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../../documentation.html">Documentation</a></li>
+    <li><a href="../index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/project-directory">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+    <li><a class="reference external"
+	href="license.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Testing</a><ul>
+<li><a class="reference internal" href="#automated-testing">Automated testing</a></li>
+<li><a class="reference internal" href="#writing-tests">Writing tests</a><ul>
+<li><a class="reference internal" href="#test-files">Test files</a></li>
+<li><a class="reference internal" href="#temporary-files">Temporary files</a></li>
+<li><a class="reference internal" href="#many-tests-in-one-test-function">Many tests in one test function</a></li>
+<li><a class="reference internal" href="#suppress-warnings-on-test-output">Suppress <em>warnings</em> on test output</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-tests">Running tests</a><ul>
+<li><a class="reference internal" href="#running-the-full-test-suite">Running the full test suite</a></li>
+<li><a class="reference internal" href="#install-optional-data-packages-for-testing">Install optional data packages for testing</a></li>
+<li><a class="reference internal" href="#running-individual-tests">Running individual tests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#coverage-testing">Coverage Testing</a><ul>
+<li><a class="reference internal" href="#sneeze">Sneeze</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="commit_codes.html"
+                        title="previous chapter">Commit message codes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="debugging.html"
+                        title="next chapter">Debugging</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/devel/guidelines/testing.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="testing">
+<span id="id1"></span><h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<p>Nipy uses the <a class="reference external" href="http://numpy.scipy.org">Numpy</a> test framework which is based on <a class="reference external" href="http://nose.readthedocs.org/en/latest">nose</a>.  If you
+plan to do development on nipy please have a look at the <a class="reference external" href="nose">nose docs</a>
+and read through the <a class="reference external" href="http://projects.scipy.org/scipy/numpy/wiki/TestingGuidelines">numpy testing guidelines</a>.</p>
+<div class="section" id="automated-testing">
+<span id="id2"></span><h2>Automated testing<a class="headerlink" href="#automated-testing" title="Permalink to this headline">¶</a></h2>
+<p>We run the tests on every commit with <a class="reference external" href="https://travis-ci.org">travis-ci</a> <a href="#id127"><span class="problematic" id="id128">|--|</span></a> see <a class="reference external" href="https://travis-ci.org/nipy/nipy">nipy on travis</a>.</p>
+<p>We also have a farm of machines set up to run the tests on every commit to the
+<code class="docutils literal notranslate"><span class="pre">master</span></code> branch at <a class="reference external" href="http://nipy.bic.berkeley.edu">nipy buildbot</a>.</p>
+</div>
+<div class="section" id="writing-tests">
+<h2>Writing tests<a class="headerlink" href="#writing-tests" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="test-files">
+<h3>Test files<a class="headerlink" href="#test-files" title="Permalink to this headline">¶</a></h3>
+<p>We like test modules to import their testing functions and classes from the
+module in which they are defined.  For example, we might want to use the
+<code class="docutils literal notranslate"><span class="pre">assert_true</span></code>, <code class="docutils literal notranslate"><span class="pre">assert_equal</span></code> functions defined by <code class="docutils literal notranslate"><span class="pre">nose</span></code>, the
+<code class="docutils literal notranslate"><span class="pre">assert_array_equal</span></code>, <code class="docutils literal notranslate"><span class="pre">assert_almost_equal</span></code> functions defined by
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code>, and the <code class="docutils literal notranslate"><span class="pre">funcfile,</span> <span class="pre">anatfile</span></code> variables from <code class="docutils literal notranslate"><span class="pre">nipy</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nose.tools</span> <span class="kn">import</span> <span class="n">assert_true</span><span class="p">,</span> <span class="n">assert_equal</span>
+<span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="kn">import</span> <span class="n">assert_array_equal</span><span class="p">,</span> <span class="n">assert_almost_equal</span>
+<span class="kn">from</span> <span class="nn">nipy.testing</span> <span class="kn">import</span> <span class="n">funcfile</span><span class="p">,</span> <span class="n">anatfile</span>
+</pre></div>
+</div>
+<p>Please name your test file with the <code class="docutils literal notranslate"><span class="pre">test_</span></code> prefix followed by the module
+name it tests.  This makes it obvious for other developers which modules are
+tested, where to add tests, etc…  An example test file and module pairing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nipy</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">coordinate_system</span><span class="o">.</span><span class="n">py</span>
+<span class="n">nipy</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_coordinate_system</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>All tests go in a <code class="docutils literal notranslate"><span class="pre">tests</span></code> subdirectory for each package.</p>
+</div>
+<div class="section" id="temporary-files">
+<h3>Temporary files<a class="headerlink" href="#temporary-files" title="Permalink to this headline">¶</a></h3>
+<p>If you need to create a temporary file during your testing, you could
+use one of these three methods, in order of convenience:</p>
+<ol class="arabic">
+<li><p><a class="reference external" href="http://docs.python.org/library/stringio.html">StringIO</a></p>
+<p>StringIO creates an in memory file-like object. The memory buffer
+is freed when the file is closed.  This is the preferred method for
+temporary files in tests.</p>
+</li>
+<li><p><cite>nibabel.tmpdirs.InTemporaryDirectory</cite> context manager.</p>
+<p>This is a convenient way of putting you into a temporary directory so you can
+save anything you like into the current directory, and feel fine about it
+after.  Like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">..tmpdirs</span> <span class="kn">import</span> <span class="n">InTemporaryDirectory</span>
+
+<span class="k">with</span> <span class="n">InTemporaryDirectory</span><span class="p">():</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile&#39;</span><span class="p">,</span> <span class="s1">&#39;wt&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Anything at all&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>One thing to be careful of is that you may need to delete objects holding
+onto the file before you exit the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement, otherwise Windows may
+refuse to delete the file.</p>
+</li>
+<li><p><a class="reference external" href="http://docs.python.org/library/tempfile.html">tempfile.mkstemp</a></p>
+<p>This will create a temporary file which can be used during testing.
+There are parameters for specifying the filename <em>prefix</em> and
+<em>suffix</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The tempfile module includes a convenience function
+<em>NamedTemporaryFile</em> which deletes the file automatically when
+it is closed.  However, whether the files can be opened a
+second time varies across platforms and there are problems
+using this function on <em>Windows</em>.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkstemp</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">fd</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">mkstemp</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;.nii.gz&#39;</span><span class="p">)</span>
+    <span class="n">tmpfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">save_image</span><span class="p">(</span><span class="n">fake_image</span><span class="p">,</span> <span class="n">tmpfile</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">tmpfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># This deletes the temp file</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Please don’t just create a file in the test directory and then remove it with a
+call to <code class="docutils literal notranslate"><span class="pre">os.remove</span></code>.  For various reasons, sometimes <code class="docutils literal notranslate"><span class="pre">os.remove</span></code> doesn’t get
+called and temp files get left around.</p>
+</div>
+<div class="section" id="many-tests-in-one-test-function">
+<h3>Many tests in one test function<a class="headerlink" href="#many-tests-in-one-test-function" title="Permalink to this headline">¶</a></h3>
+<p>To keep tests organized, it’s best to have one test function
+correspond to one class method or module-level function.  Often
+though, you need many individual tests to thoroughly cover the
+method/function.  For convenience, we often write many tests in a single test
+function.  This has the disadvantage that if one test fails, nose will not run
+any of the subsequent tests in the same function.  This isn’t a big problem in
+practice, because we run the tests so often (<a class="reference internal" href="#automated-testing"><span class="std std-ref">Automated testing</span></a>) that we
+can quickly pick up and fix the failures.</p>
+<p>For axample, this test function executes four tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_index</span><span class="p">():</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">CoordinateSystem</span><span class="p">(</span><span class="s1">&#39;ijk&#39;</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">cs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">cs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">cs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">cs</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We used to use <a class="reference external" href="http://nose.readthedocs.org/en/latest/writing_tests.html#test-generators">nose test generators</a>
+for multiple tests in one function.  Test generators are test functions that
+return tests and parameters from <code class="docutils literal notranslate"><span class="pre">yield</span></code> statements.  You will still find
+many examples of these in the nipy codebase, but they made test failures
+rather hard to debug, so please don’t use test generators in new tests.</p>
+</div>
+<div class="section" id="suppress-warnings-on-test-output">
+<h3>Suppress <em>warnings</em> on test output<a class="headerlink" href="#suppress-warnings-on-test-output" title="Permalink to this headline">¶</a></h3>
+<p>In order to reduce noise when running the tests, consider suppressing
+<em>warnings</em> in your test modules.  This can be done in the module-level
+setup and teardown functions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="o">...</span>
+
+<span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
+    <span class="c1"># Suppress warnings during tests to reduce noise</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">teardown</span><span class="p">():</span>
+    <span class="c1"># Clear list of warning filters</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">resetwarnings</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="running-tests">
+<h2>Running tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="running-the-full-test-suite">
+<h3>Running the full test suite<a class="headerlink" href="#running-the-full-test-suite" title="Permalink to this headline">¶</a></h3>
+<p>To run nipy’s tests, you will need to <a class="reference external" href="http://nose.readthedocs.org/en/latest">nose</a> installed.  Then:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;import nipy; nipy.test()&quot;</span>
+</pre></div>
+</div>
+<p>You can also run nipy’s tests with the <code class="docutils literal notranslate"><span class="pre">nipnost</span></code> script in the <code class="docutils literal notranslate"><span class="pre">tools</span></code>
+directory of the nipy distribution:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">tools</span><span class="o">/</span><span class="n">nipnost</span> <span class="n">nipy</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">nipnost</span></code> is a thin wrapper around the standard <code class="docutils literal notranslate"><span class="pre">nosetests</span></code> program that
+is part of the nose package. The <code class="docutils literal notranslate"><span class="pre">nipnost</span></code> wrapper sets up some custom
+doctest machinery and makes sure that <a class="reference external" href="http://matplotlib.sourceforge.net">matplotlib</a> is using non-interactive
+plots.  <code class="docutils literal notranslate"><span class="pre">nipy.test()</span></code> does the same thing.</p>
+<p>Try <code class="docutils literal notranslate"><span class="pre">nipnost</span> <span class="pre">--help</span></code> to see a large number of command-line options.</p>
+</div>
+<div class="section" id="install-optional-data-packages-for-testing">
+<h3>Install optional data packages for testing<a class="headerlink" href="#install-optional-data-packages-for-testing" title="Permalink to this headline">¶</a></h3>
+<p>For our tests, we have collected a set of fmri imaging data which are
+required for the tests to run.  To do this, download the latest example
+data and template package files from <a class="reference external" href="http://nipy.sourceforge.net/data-packages">NIPY data packages</a>. See
+<a class="reference internal" href="../../users/install_data.html#data-files"><span class="std std-ref">Optional data packages</span></a>.</p>
+</div>
+<div class="section" id="running-individual-tests">
+<h3>Running individual tests<a class="headerlink" href="#running-individual-tests" title="Permalink to this headline">¶</a></h3>
+<p>You can also run the tests from the command line with a variety of options.</p>
+<p>See above for a description of the <code class="docutils literal notranslate"><span class="pre">nipnost</span></code> program.</p>
+<p>To test an individual module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nipnost</span> <span class="n">test_image</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>To test an individual function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nipnost</span> <span class="n">test_module</span><span class="p">:</span><span class="n">test_function</span>
+</pre></div>
+</div>
+<p>To test a class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nipnost</span> <span class="n">test_module</span><span class="p">:</span><span class="n">TestClass</span>
+</pre></div>
+</div>
+<p>To test a class method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nipnost</span> <span class="n">test_module</span><span class="p">:</span><span class="n">TestClass</span><span class="o">.</span><span class="n">test_method</span>
+</pre></div>
+</div>
+<p>Verbose mode (<em>-v</em> option) will print out the function names as they
+are executed.  Standard output is normally supressed by nose, to see
+any print statements you must include the <em>-s</em> option.  In order to
+get a “full verbose” output, call nose like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nipnost</span> <span class="o">-</span><span class="n">sv</span> <span class="n">test_module</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>To include doctests in the nose test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nipnost</span> <span class="o">-</span><span class="n">sv</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">doctest</span> <span class="n">test_module</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>For details on all the command line options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nipnost</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="coverage-testing">
+<span id="coverage"></span><h2>Coverage Testing<a class="headerlink" href="#coverage-testing" title="Permalink to this headline">¶</a></h2>
+<p>Coverage testing is a technique used to see how much of the code is
+exercised by the unit tests. It is important to remember that a high
+level of coverage is a necessary but not sufficient condition for
+having effective tests. Coverage testing can be useful for identifying
+whole functions or classes which are not tested, or for finding
+certain conditions which are never tested.</p>
+<p>This is an excellent task for <a class="reference external" href="http://nose.readthedocs.org/en/latest">nose</a> - the automated test runner we are
+using.  Nose can run the <a class="reference external" href="http://nedbatchelder.com/code/modules/coverage.html">python coverage tester</a>.  First make sure
+you have the coverage tester installed on your system.  Download the
+tarball from the link, extract and install <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span>
+<span class="pre">install</span></code>. Or on Ubuntu you can install from apt-get: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span>
+<span class="pre">install</span> <span class="pre">python-coverage</span></code>.</p>
+<p>Run nose with coverage testing arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">-</span><span class="n">sv</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">coverage</span> <span class="n">path_to_code</span>
+</pre></div>
+</div>
+<p>For example, this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">-</span><span class="n">sv</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">coverage</span> <span class="n">test_coordinate_map</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>will report the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span>                                            <span class="n">Stmts</span>   <span class="n">Exec</span>  <span class="n">Cover</span>   <span class="n">Missing</span>
+<span class="o">-----------------------------------------------------------------------------</span>
+<span class="n">nipy</span>                                       <span class="mi">21</span>     <span class="mi">14</span>    <span class="mi">66</span><span class="o">%</span>   <span class="mi">70</span><span class="o">-</span><span class="mi">74</span><span class="p">,</span> <span class="mi">88</span><span class="o">-</span><span class="mi">89</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span>                                   <span class="mi">4</span>      <span class="mi">4</span>   <span class="mi">100</span><span class="o">%</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span>                         <span class="mi">8</span>      <span class="mi">8</span>   <span class="mi">100</span><span class="o">%</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">array_coords</span>          <span class="mi">100</span>     <span class="mi">90</span>    <span class="mi">90</span><span class="o">%</span>   <span class="mi">133</span><span class="o">-</span><span class="mi">134</span><span class="p">,</span> <span class="mi">148</span><span class="o">-</span><span class="mi">151</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">222</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">242</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">coordinate_map</span>        <span class="mi">188</span>    <span class="mi">187</span>    <span class="mi">99</span><span class="o">%</span>   <span class="mi">738</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">coordinate_system</span>      <span class="mi">61</span>     <span class="mi">61</span>   <span class="mi">100</span><span class="o">%</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">slices</span>                 <span class="mi">34</span>     <span class="mi">34</span>   <span class="mi">100</span><span class="o">%</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">transforms</span>                        <span class="mi">0</span>      <span class="mi">0</span>   <span class="mi">100</span><span class="o">%</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">affines</span>               <span class="mi">14</span>     <span class="mi">14</span>   <span class="mi">100</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>The coverage report will cover any python source module imported after
+the start of the test.  This can be noisy and difficult to focus on
+the specific module for which you are writing nosetests.  For
+instance, the above report also included coverage of most of
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code>.  To focus the coverage report, you can provide nose with
+the specific package you would like output from using the
+<code class="docutils literal notranslate"><span class="pre">--cover-package</span></code>.  For example, in writing tests for the
+coordinate_map module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">coverage</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">coordinate_map</span> <span class="n">test_coordinate_map</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Since that’s a lot to type, I wrote a tool called <code class="docutils literal notranslate"><span class="pre">sneeze</span></code> to that
+simplifies coverage testing with nose.</p>
+<div class="section" id="sneeze">
+<h3>Sneeze<a class="headerlink" href="#sneeze" title="Permalink to this headline">¶</a></h3>
+<p>Sneeze runs nose with coverage testing and reports only the package
+the test module is testing.  It requires the test module follow a
+simple naming convention:</p>
+<ol class="arabic simple">
+<li><p>Prefix <code class="docutils literal notranslate"><span class="pre">test_</span></code></p></li>
+<li><p>The package name you are testing</p></li>
+<li><p>Suffix <code class="docutils literal notranslate"><span class="pre">.py</span></code></p></li>
+</ol>
+<p>For example, the test module for the <code class="docutils literal notranslate"><span class="pre">coordinate_map</span></code> module is
+named <code class="docutils literal notranslate"><span class="pre">test_coordinate_map.py</span></code>.  Then testing coverage is as simple as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sneeze</span><span class="o">.</span><span class="n">py</span> <span class="n">test_coordinate_map</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Sneeze is included in the <code class="docutils literal notranslate"><span class="pre">tools</span></code> directory in the <a class="reference external" href="http://nipy.org/nipy">nipy</a>
+source. Simply run the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> to install sneeze in your local
+bin directory.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="debugging.html" title="Debugging"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="commit_codes.html" title="Commit message codes"
+             >previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >Developer Guide</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >Development Guidelines</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2005-2021, Neuroimaging in Python team.
+      Last updated on Mar 29, 2021.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

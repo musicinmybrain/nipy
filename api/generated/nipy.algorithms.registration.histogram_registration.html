@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neuroimaging in Python &#8212; NIPY Documentation</title>
+    <link rel="stylesheet" href="../../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="algorithms.registration.optimizer" href="nipy.algorithms.registration.optimizer.html" />
+    <link rel="prev" title="algorithms.registration.groupwise_registration" href="nipy.algorithms.registration.groupwise_registration.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head><body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../../index.html">
+  <img src="../../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.registration.optimizer.html" title="algorithms.registration.optimizer"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.registration.groupwise_registration.html" title="algorithms.registration.groupwise_registration"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U">API</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../../documentation.html">Documentation</a></li>
+    <li><a href="../../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/project-directory">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+    <li><a class="reference external"
+	href="license.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">algorithms.registration.histogram_registration</a><ul>
+<li><a class="reference internal" href="#module-algorithms-registration-histogram-registration">Module: <code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms.registration.histogram_registration</span></code></a></li>
+<li><a class="reference internal" href="#class">Class</a></li>
+<li><a class="reference internal" href="#histogramregistration"><code class="xref py py-class docutils literal notranslate"><span class="pre">HistogramRegistration</span></code></a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="nipy.algorithms.registration.groupwise_registration.html"
+                        title="previous chapter">algorithms.registration.groupwise_registration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="nipy.algorithms.registration.optimizer.html"
+                        title="next chapter">algorithms.registration.optimizer</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/api/generated/nipy.algorithms.registration.histogram_registration.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="algorithms-registration-histogram-registration">
+<h1>algorithms.registration.histogram_registration<a class="headerlink" href="#algorithms-registration-histogram-registration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-algorithms-registration-histogram-registration">
+<h2>Module: <code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms.registration.histogram_registration</span></code><a class="headerlink" href="#module-algorithms-registration-histogram-registration" title="Permalink to this headline">¶</a></h2>
+<p>Inheritance diagram for <code class="docutils literal notranslate"><span class="pre">nipy.algorithms.registration.histogram_registration</span></code>:</p>
+<div class="graphviz"><img src="../../_images/inheritance-df9caae39779689af6603d772033ede563401441.png" alt="Inheritance diagram of nipy.algorithms.registration.histogram_registration" usemap="#inheritance9b519716ed" class="inheritance graphviz" /></div>
+<map id="inheritance9b519716ed" name="inheritance9b519716ed">
+<area shape="rect" id="node1" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration" target="_top" title="A class to reprensent a generic intensity&#45;based image registration" alt="" coords="5,5,357,31"/>
+</map><span class="target" id="module-nipy.algorithms.registration.histogram_registration"></span><p>Intensity-based image registration</p>
+</div>
+<div class="section" id="class">
+<h2>Class<a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="histogramregistration">
+<h2><a class="reference internal" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration" title="nipy.algorithms.registration.histogram_registration.HistogramRegistration"><code class="xref py py-class docutils literal notranslate"><span class="pre">HistogramRegistration</span></code></a><a class="headerlink" href="#histogramregistration" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration">
+<em class="property">class </em><code class="sig-prename descclassname">nipy.algorithms.registration.histogram_registration.</code><code class="sig-name descname">HistogramRegistration</code><span class="sig-paren">(</span><em class="sig-param">from_img</em>, <em class="sig-param">to_img</em>, <em class="sig-param">from_bins=256</em>, <em class="sig-param">to_bins=None</em>, <em class="sig-param">from_mask=None</em>, <em class="sig-param">to_mask=None</em>, <em class="sig-param">similarity='crl1'</em>, <em class="sig-param">interp='pv'</em>, <em class="sig-param">smooth=0</em>, <em class="sig-param">renormalize=False</em>, <em class="sig-param">dist=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to reprensent a generic intensity-based image registration
+algorithm.</p>
+<dl class="method">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">from_img</em>, <em class="sig-param">to_img</em>, <em class="sig-param">from_bins=256</em>, <em class="sig-param">to_bins=None</em>, <em class="sig-param">from_mask=None</em>, <em class="sig-param">to_mask=None</em>, <em class="sig-param">similarity='crl1'</em>, <em class="sig-param">interp='pv'</em>, <em class="sig-param">smooth=0</em>, <em class="sig-param">renormalize=False</em>, <em class="sig-param">dist=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Creates a new histogram registration object.</p>
+</div></blockquote>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>from_img</strong><span class="classifier">nipy-like image</span></dt><dd><blockquote>
+<div><p><cite>From</cite> image</p>
+</div></blockquote>
+<dl class="simple">
+<dt>to_img<span class="classifier">nipy-like image</span></dt><dd><p><cite>To</cite> image</p>
+</dd>
+<dt>from_bins<span class="classifier">integer</span></dt><dd><p>Number of histogram bins to represent the <cite>from</cite> image</p>
+</dd>
+<dt>to_bins<span class="classifier">integer</span></dt><dd><p>Number of histogram bins to represent the <cite>to</cite> image</p>
+</dd>
+<dt>from_mask<span class="classifier">array-like</span></dt><dd><p>Mask to apply to the <cite>from</cite> image</p>
+</dd>
+<dt>to_mask<span class="classifier">array-like</span></dt><dd><p>Mask to apply to the <cite>to</cite> image</p>
+</dd>
+<dt>similarity<span class="classifier">str or callable</span></dt><dd><p>Cost-function for assessing image similarity. If a string,
+one of ‘cc’: correlation coefficient, ‘cr’: correlation
+ratio, ‘crl1’: L1-norm based correlation ratio, ‘mi’: mutual
+information, ‘nmi’: normalized mutual information, ‘slr’:
+supervised log-likelihood ratio. If a callable, it should
+take a two-dimensional array representing the image joint
+histogram as an input and return a float.</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>dist: None or array-like</strong></dt><dd><p>Joint intensity probability distribution model for use with the 
+‘slr’ measure. Should be of shape (from_bins, to_bins).</p>
+</dd>
+<dt><strong>interp</strong><span class="classifier">str</span></dt><dd><p>Interpolation method.  One of ‘pv’: Partial volume, ‘tri’:
+Trilinear, ‘rand’: Random interpolation.  See <code class="docutils literal notranslate"><span class="pre">joint_histogram.c</span></code></p>
+</dd>
+<dt><strong>smooth</strong><span class="classifier">float</span></dt><dd><p>Standard deviation in millimeters of an isotropic Gaussian
+kernel used to smooth the <cite>To</cite> image. If 0, no smoothing is
+applied.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration.eval">
+<code class="sig-name descname">eval</code><span class="sig-paren">(</span><em class="sig-param">T</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate similarity function given a world-to-world transform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>T</strong><span class="classifier">Transform</span></dt><dd><p>Transform object implementing <code class="docutils literal notranslate"><span class="pre">apply</span></code> method</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration.eval_gradient">
+<code class="sig-name descname">eval_gradient</code><span class="sig-paren">(</span><em class="sig-param">T</em>, <em class="sig-param">epsilon=0.1</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration.eval_gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the gradient of the similarity function wrt
+transformation parameters.</p>
+<p>The gradient is approximated using central finite differences
+at the transformation specified by <cite>T</cite>. The input
+transformation object <cite>T</cite> is modified in place unless it has a
+<code class="docutils literal notranslate"><span class="pre">copy</span></code> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>T</strong><span class="classifier">Transform</span></dt><dd><p>Transform object implementing <code class="docutils literal notranslate"><span class="pre">apply</span></code> method</p>
+</dd>
+<dt><strong>epsilon</strong><span class="classifier">float</span></dt><dd><p>Step size for finite differences in units of the
+transformation parameters</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>g</strong><span class="classifier">ndarray</span></dt><dd><p>Similarity gradient estimate</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration.eval_hessian">
+<code class="sig-name descname">eval_hessian</code><span class="sig-paren">(</span><em class="sig-param">T</em>, <em class="sig-param">epsilon=0.1</em>, <em class="sig-param">diag=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration.eval_hessian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the Hessian of the similarity function wrt
+transformation parameters.</p>
+<p>The Hessian or its diagonal is approximated at the
+transformation specified by <cite>T</cite> using central finite
+differences. The input transformation object <cite>T</cite> is modified
+in place unless it has a <code class="docutils literal notranslate"><span class="pre">copy</span></code> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>T</strong><span class="classifier">Transform</span></dt><dd><p>Transform object implementing <code class="docutils literal notranslate"><span class="pre">apply</span></code> method</p>
+</dd>
+<dt><strong>epsilon</strong><span class="classifier">float</span></dt><dd><p>Step size for finite differences in units of the
+transformation parameters</p>
+</dd>
+<dt><strong>diag</strong><span class="classifier">bool</span></dt><dd><p>If True, approximate the Hessian by a diagonal matrix.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>H</strong><span class="classifier">ndarray</span></dt><dd><p>Similarity Hessian matrix estimate</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration.explore">
+<code class="sig-name descname">explore</code><span class="sig-paren">(</span><em class="sig-param">T</em>, <em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration.explore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the similarity at the transformations specified by
+sequences of parameter values.</p>
+<p>For instance:</p>
+<p>s, p = explore(T, (0, [-1,0,1]), (4, [-2.,2]))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>T</strong><span class="classifier">object</span></dt><dd><p>Transformation around which the similarity function is to be
+evaluated. It is modified in place unless it has a <code class="docutils literal notranslate"><span class="pre">copy</span></code>
+method.</p>
+</dd>
+<dt><strong>args</strong><span class="classifier">tuple</span></dt><dd><p>Each element of <cite>args</cite> is a sequence of two elements, where
+the first element specifies a transformation parameter axis
+and the second element gives the successive parameter values
+to evaluate along that axis.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>s</strong><span class="classifier">ndarray</span></dt><dd><p>Array of similarity values</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">ndarray</span></dt><dd><p>Corresponding array of evaluated transformation parameters</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration.interp">
+<em class="property">property </em><code class="sig-name descname">interp</code><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration.interp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration.optimize">
+<code class="sig-name descname">optimize</code><span class="sig-paren">(</span><em class="sig-param">T</em>, <em class="sig-param">optimizer='powell'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration.optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimize transform <cite>T</cite> with respect to similarity measure.</p>
+<p>The input object <cite>T</cite> will change as a result of the optimization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>T</strong><span class="classifier">object or str</span></dt><dd><p>An object representing a transformation that should
+implement <code class="docutils literal notranslate"><span class="pre">apply</span></code> method and <code class="docutils literal notranslate"><span class="pre">param</span></code> attribute or
+property. If a string, one of ‘rigid’, ‘similarity’, or
+‘affine’. The corresponding transformation class is then
+initialized by default.</p>
+</dd>
+<dt><strong>optimizer</strong><span class="classifier">str</span></dt><dd><p>Name of optimization function (one of ‘powell’, ‘steepest’,
+‘cg’, ‘bfgs’, ‘simplex’)</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>keyword arguments to pass to optimizer</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>T</strong><span class="classifier">object</span></dt><dd><p>Locally optimal transformation</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration.set_fov">
+<code class="sig-name descname">set_fov</code><span class="sig-paren">(</span><em class="sig-param">spacing=None</em>, <em class="sig-param">corner=(0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">size=None</em>, <em class="sig-param">npoints=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration.set_fov" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines a subset of the <cite>from</cite> image to restrict joint
+histogram computation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>spacing</strong><span class="classifier">sequence (3,) of positive integers</span></dt><dd><p>Subsampling of image in voxels, where None (default) results
+in the subsampling to be automatically adjusted to roughly
+match a cubic grid with <cite>npoints</cite> voxels</p>
+</dd>
+<dt><strong>corner</strong><span class="classifier">sequence (3,) of positive integers</span></dt><dd><p>Bounding box origin in voxel coordinates</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">sequence (3,) of positive integers</span></dt><dd><p>Desired bounding box size</p>
+</dd>
+<dt><strong>npoints</strong><span class="classifier">positive integer</span></dt><dd><p>Desired number of voxels in the bounding box. If a <cite>spacing</cite>
+argument is provided, then <cite>npoints</cite> is ignored.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration.similarity">
+<em class="property">property </em><code class="sig-name descname">similarity</code><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration.similarity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.registration.histogram_registration.HistogramRegistration.subsample">
+<code class="sig-name descname">subsample</code><span class="sig-paren">(</span><em class="sig-param">spacing=None</em>, <em class="sig-param">npoints=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.HistogramRegistration.subsample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nipy.algorithms.registration.histogram_registration.approx_gradient">
+<code class="sig-prename descclassname">nipy.algorithms.registration.histogram_registration.</code><code class="sig-name descname">approx_gradient</code><span class="sig-paren">(</span><em class="sig-param">f</em>, <em class="sig-param">x</em>, <em class="sig-param">epsilon</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.approx_gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximate the gradient of a function using central finite
+differences</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>f: callable</strong></dt><dd><p>The function to differentiate</p>
+</dd>
+<dt><strong>x: ndarray</strong></dt><dd><p>Point where the function gradient is to be evaluated</p>
+</dd>
+<dt><strong>epsilon: float</strong></dt><dd><p>Stepsize for finite differences</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>g: ndarray</strong></dt><dd><p>Function gradient at <cite>x</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.registration.histogram_registration.approx_hessian">
+<code class="sig-prename descclassname">nipy.algorithms.registration.histogram_registration.</code><code class="sig-name descname">approx_hessian</code><span class="sig-paren">(</span><em class="sig-param">f</em>, <em class="sig-param">x</em>, <em class="sig-param">epsilon</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.approx_hessian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximate the full Hessian matrix of a function using central
+finite differences</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>f: callable</strong></dt><dd><p>The function to differentiate</p>
+</dd>
+<dt><strong>x: ndarray</strong></dt><dd><p>Point where the Hessian is to be evaluated</p>
+</dd>
+<dt><strong>epsilon: float</strong></dt><dd><p>Stepsize for finite differences</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>H: ndarray</strong></dt><dd><p>Hessian matrix at <cite>x</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.registration.histogram_registration.approx_hessian_diag">
+<code class="sig-prename descclassname">nipy.algorithms.registration.histogram_registration.</code><code class="sig-name descname">approx_hessian_diag</code><span class="sig-paren">(</span><em class="sig-param">f</em>, <em class="sig-param">x</em>, <em class="sig-param">epsilon</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.approx_hessian_diag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximate the Hessian diagonal of a function using central
+finite differences</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>f: callable</strong></dt><dd><p>The function to differentiate</p>
+</dd>
+<dt><strong>x: ndarray</strong></dt><dd><p>Point where the Hessian is to be evaluated</p>
+</dd>
+<dt><strong>epsilon: float</strong></dt><dd><p>Stepsize for finite differences</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>h: ndarray</strong></dt><dd><p>Diagonal of the Hessian at <cite>x</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.registration.histogram_registration.clamp">
+<code class="sig-prename descclassname">nipy.algorithms.registration.histogram_registration.</code><code class="sig-name descname">clamp</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">bins</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.clamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clamp array values that fall within a given mask in the range
+[0..bins-1] and reset masked values to -1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">ndarray</span></dt><dd><p>The input array</p>
+</dd>
+<dt><strong>bins</strong><span class="classifier">number</span></dt><dd><p>Desired number of bins</p>
+</dd>
+<dt><strong>mask</strong><span class="classifier">ndarray, tuple or slice</span></dt><dd><p>Anything such that x[mask] is an array.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">ndarray</span></dt><dd><p>Clamped array, masked items are assigned -1</p>
+</dd>
+<dt><strong>bins</strong><span class="classifier">number</span></dt><dd><p>Adjusted number of bins</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.registration.histogram_registration.ideal_spacing">
+<code class="sig-prename descclassname">nipy.algorithms.registration.histogram_registration.</code><code class="sig-name descname">ideal_spacing</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">npoints</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.ideal_spacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tune spacing factors so that the number of voxels in the
+output block matches a given number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray or sequence</span></dt><dd><p>Data image to subsample</p>
+</dd>
+<dt><strong>npoints</strong><span class="classifier">number</span></dt><dd><p>Target number of voxels (negative values will be ignored)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>spacing: ndarray</strong></dt><dd><p>Spacing factors</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.registration.histogram_registration.smallest_bounding_box">
+<code class="sig-prename descclassname">nipy.algorithms.registration.histogram_registration.</code><code class="sig-name descname">smallest_bounding_box</code><span class="sig-paren">(</span><em class="sig-param">msk</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.smallest_bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the smallest bounding box from a mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>msk</strong><span class="classifier">ndarray</span></dt><dd><p>Array of boolean</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>corner: ndarray</strong></dt><dd><p>3-dimensional coordinates of bounding box corner</p>
+</dd>
+<dt><strong>size: ndarray</strong></dt><dd><p>3-dimensional size of bounding box</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.registration.histogram_registration.smooth_image">
+<code class="sig-prename descclassname">nipy.algorithms.registration.histogram_registration.</code><code class="sig-name descname">smooth_image</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">affine</em>, <em class="sig-param">sigma</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.registration.histogram_registration.smooth_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smooth an image by an isotropic Gaussian filter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data: ndarray</strong></dt><dd><p>Image data array</p>
+</dd>
+<dt><strong>affine: ndarray</strong></dt><dd><p>Image affine transform</p>
+</dd>
+<dt><strong>sigma: float</strong></dt><dd><p>Filter standard deviation in mm</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>sdata: ndarray</strong></dt><dd><p>Smoothed data array</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.registration.optimizer.html" title="algorithms.registration.optimizer"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.registration.groupwise_registration.html" title="algorithms.registration.groupwise_registration"
+             >previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >API</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2005-2021, Neuroimaging in Python team.
+      Last updated on Mar 29, 2021.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

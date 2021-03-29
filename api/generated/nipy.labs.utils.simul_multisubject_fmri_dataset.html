@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neuroimaging in Python &#8212; NIPY Documentation</title>
+    <link rel="stylesheet" href="../../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="labs.utils.zscore" href="nipy.labs.utils.zscore.html" />
+    <link rel="prev" title="labs.utils.reproducibility_measures" href="nipy.labs.utils.reproducibility_measures.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head><body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../../index.html">
+  <img src="../../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="nipy.labs.utils.zscore.html" title="labs.utils.zscore"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="nipy.labs.utils.reproducibility_measures.html" title="labs.utils.reproducibility_measures"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U">API</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../../documentation.html">Documentation</a></li>
+    <li><a href="../../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/project-directory">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+    <li><a class="reference external"
+	href="license.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">labs.utils.simul_multisubject_fmri_dataset</a><ul>
+<li><a class="reference internal" href="#module-nipy.labs.utils.simul_multisubject_fmri_dataset">Module: <code class="xref py py-mod docutils literal notranslate"><span class="pre">labs.utils.simul_multisubject_fmri_dataset</span></code></a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="nipy.labs.utils.reproducibility_measures.html"
+                        title="previous chapter">labs.utils.reproducibility_measures</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="nipy.labs.utils.zscore.html"
+                        title="next chapter">labs.utils.zscore</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/api/generated/nipy.labs.utils.simul_multisubject_fmri_dataset.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="labs-utils-simul-multisubject-fmri-dataset">
+<h1>labs.utils.simul_multisubject_fmri_dataset<a class="headerlink" href="#labs-utils-simul-multisubject-fmri-dataset" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-nipy.labs.utils.simul_multisubject_fmri_dataset">
+<span id="module-labs-utils-simul-multisubject-fmri-dataset"></span><h2>Module: <code class="xref py py-mod docutils literal notranslate"><span class="pre">labs.utils.simul_multisubject_fmri_dataset</span></code><a class="headerlink" href="#module-nipy.labs.utils.simul_multisubject_fmri_dataset" title="Permalink to this headline">¶</a></h2>
+<p>This module conatins a function to produce a dataset which simulates
+a collection of 2D images This dataset is saved as a 3D image
+(each slice being a subject) and a 3D array</p>
+<p>Author : Bertrand Thirion, 2008-2010</p>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nipy.labs.utils.simul_multisubject_fmri_dataset.surrogate_2d_dataset">
+<code class="sig-prename descclassname">nipy.labs.utils.simul_multisubject_fmri_dataset.</code><code class="sig-name descname">surrogate_2d_dataset</code><span class="sig-paren">(</span><em class="sig-param">n_subj=10, shape=(30, 30), sk=1.0, noise_level=1.0, pos=array([[ 6,  7],        [10, 10],        [15, 10]]), ampli=array([3, 4, 4]), spatial_jitter=1.0, signal_jitter=1.0, width=5.0, width_jitter=0, out_text_file=None, out_image_file=None, seed=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.labs.utils.simul_multisubject_fmri_dataset.surrogate_2d_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create surrogate (simulated) 2D activation data with spatial noise</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_subj: integer, optionnal</strong></dt><dd><p>The number of subjects, ie the number of different maps
+generated.</p>
+</dd>
+<dt><strong>shape=(30,30): tuple of integers,</strong></dt><dd><p>the shape of each image</p>
+</dd>
+<dt><strong>sk: float, optionnal</strong></dt><dd><p>Amount of spatial noise smoothness.</p>
+</dd>
+<dt><strong>noise_level: float, optionnal</strong></dt><dd><p>Amplitude of the spatial noise.
+amplitude=noise_level)</p>
+</dd>
+<dt><strong>pos: 2D ndarray of integers, optionnal</strong></dt><dd><p>x, y positions of the various simulated activations.</p>
+</dd>
+<dt><strong>ampli: 1D ndarray of floats, optionnal</strong></dt><dd><p>Respective amplitude of each activation</p>
+</dd>
+<dt><strong>spatial_jitter: float, optionnal</strong></dt><dd><p>Random spatial jitter added to the position of each activation,
+in pixel.</p>
+</dd>
+<dt><strong>signal_jitter: float, optionnal</strong></dt><dd><p>Random amplitude fluctuation for each activation, added to the
+amplitude specified by <cite>ampli</cite></p>
+</dd>
+<dt><strong>width: float or ndarray, optionnal</strong></dt><dd><p>Width of the activations</p>
+</dd>
+<dt><strong>width_jitter: float</strong></dt><dd><p>Relative width jitter of the blobs</p>
+</dd>
+<dt><strong>out_text_file: string or None, optionnal</strong></dt><dd><p>If not None, the resulting array is saved as a text file with the
+given file name</p>
+</dd>
+<dt><strong>out_image_file: string or None, optionnal</strong></dt><dd><p>If not None, the resulting is saved as a nifti file with the
+given file name.</p>
+</dd>
+<dt><strong>seed=False:  int, optionnal</strong></dt><dd><p>If seed is not False, the random number generator is initialized
+at a certain value</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>dataset: 3D ndarray</strong></dt><dd><p>The surrogate activation map, with dimensions <code class="docutils literal notranslate"><span class="pre">(n_subj,)</span> <span class="pre">+</span> <span class="pre">shape</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.labs.utils.simul_multisubject_fmri_dataset.surrogate_3d_dataset">
+<code class="sig-prename descclassname">nipy.labs.utils.simul_multisubject_fmri_dataset.</code><code class="sig-name descname">surrogate_3d_dataset</code><span class="sig-paren">(</span><em class="sig-param">n_subj=1</em>, <em class="sig-param">shape=(20</em>, <em class="sig-param">20</em>, <em class="sig-param">20)</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">sk=1.0</em>, <em class="sig-param">noise_level=1.0</em>, <em class="sig-param">pos=None</em>, <em class="sig-param">ampli=None</em>, <em class="sig-param">spatial_jitter=1.0</em>, <em class="sig-param">signal_jitter=1.0</em>, <em class="sig-param">width=5.0</em>, <em class="sig-param">out_text_file=None</em>, <em class="sig-param">out_image_file=None</em>, <em class="sig-param">seed=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.labs.utils.simul_multisubject_fmri_dataset.surrogate_3d_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create surrogate (simulated) 3D activation data with spatial noise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_subj: integer, optionnal</strong></dt><dd><p>The number of subjects, ie the number of different maps
+generated.</p>
+</dd>
+<dt><strong>shape=(20,20,20): tuple of 3 integers,</strong></dt><dd><p>the shape of each image</p>
+</dd>
+<dt><strong>mask=None: Nifti1Image instance,</strong></dt><dd><p>referential- and mask- defining image (overrides shape)</p>
+</dd>
+<dt><strong>sk: float, optionnal</strong></dt><dd><p>Amount of spatial noise smoothness.</p>
+</dd>
+<dt><strong>noise_level: float, optionnal</strong></dt><dd><p>Amplitude of the spatial noise.
+amplitude=noise_level)</p>
+</dd>
+<dt><strong>pos: 2D ndarray of integers, optionnal</strong></dt><dd><p>x, y positions of the various simulated activations.</p>
+</dd>
+<dt><strong>ampli: 1D ndarray of floats, optionnal</strong></dt><dd><p>Respective amplitude of each activation</p>
+</dd>
+<dt><strong>spatial_jitter: float, optionnal</strong></dt><dd><p>Random spatial jitter added to the position of each activation,
+in pixel.</p>
+</dd>
+<dt><strong>signal_jitter: float, optionnal</strong></dt><dd><p>Random amplitude fluctuation for each activation, added to the
+amplitude specified by ampli</p>
+</dd>
+<dt><strong>width: float or ndarray, optionnal</strong></dt><dd><p>Width of the activations</p>
+</dd>
+<dt><strong>out_text_file: string or None, optionnal</strong></dt><dd><p>If not None, the resulting array is saved as a text file with the
+given file name</p>
+</dd>
+<dt><strong>out_image_file: string or None, optionnal</strong></dt><dd><p>If not None, the resulting is saved as a nifti file with the
+given file name.</p>
+</dd>
+<dt><strong>seed=False:  int, optionnal</strong></dt><dd><p>If seed is not False, the random number generator is initialized
+at a certain value</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>dataset: 3D ndarray</strong></dt><dd><p>The surrogate activation map, with dimensions <code class="docutils literal notranslate"><span class="pre">(n_subj,)</span> <span class="pre">+</span> <span class="pre">shape</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.labs.utils.simul_multisubject_fmri_dataset.surrogate_4d_dataset">
+<code class="sig-prename descclassname">nipy.labs.utils.simul_multisubject_fmri_dataset.</code><code class="sig-name descname">surrogate_4d_dataset</code><span class="sig-paren">(</span><em class="sig-param">shape=(20</em>, <em class="sig-param">20</em>, <em class="sig-param">20)</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">n_scans=1</em>, <em class="sig-param">n_sess=1</em>, <em class="sig-param">dmtx=None</em>, <em class="sig-param">sk=1.0</em>, <em class="sig-param">noise_level=1.0</em>, <em class="sig-param">signal_level=1.0</em>, <em class="sig-param">out_image_file=None</em>, <em class="sig-param">seed=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.labs.utils.simul_multisubject_fmri_dataset.surrogate_4d_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create surrogate (simulated) 3D activation data with spatial noise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>shape = (20, 20, 20): tuple of integers,</strong></dt><dd><p>the shape of each image</p>
+</dd>
+<dt><strong>mask=None: brifti image instance,</strong></dt><dd><p>referential- and mask- defining image (overrides shape)</p>
+</dd>
+<dt><strong>n_scans: int, optional,</strong></dt><dd><p>number of scans to be simlulated
+overrided by the design matrix</p>
+</dd>
+<dt><strong>n_sess: int, optional,</strong></dt><dd><p>the number of simulated sessions</p>
+</dd>
+<dt><strong>dmtx: array of shape(n_scans, n_rows),</strong></dt><dd><p>the design matrix</p>
+</dd>
+<dt><strong>sk: float, optionnal</strong></dt><dd><p>Amount of spatial noise smoothness.</p>
+</dd>
+<dt><strong>noise_level: float, optionnal</strong></dt><dd><p>Amplitude of the spatial noise.
+amplitude=noise_level)</p>
+</dd>
+<dt><strong>signal_level: float, optional,</strong></dt><dd><p>Amplitude of the signal</p>
+</dd>
+<dt><strong>out_image_file: string or list of strings or None, optionnal</strong></dt><dd><p>If not None, the resulting is saved as (set of) nifti file(s) with the
+given file path(s)</p>
+</dd>
+<dt><strong>seed=False:  int, optionnal</strong></dt><dd><p>If seed is not False, the random number generator is initialized
+at a certain value</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>dataset: a list of n_sess ndarray of shape</strong></dt><dd><p>(shape[0], shape[1], shape[2], n_scans)
+The surrogate activation map</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="nipy.labs.utils.zscore.html" title="labs.utils.zscore"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="nipy.labs.utils.reproducibility_measures.html" title="labs.utils.reproducibility_measures"
+             >previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >API</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2005-2021, Neuroimaging in Python team.
+      Last updated on Mar 29, 2021.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

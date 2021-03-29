@@ -1,0 +1,5 @@
+<map id="inheritance7eca553039" name="inheritance7eca553039">
+<area shape="rect" id="node1" href="#nipy.algorithms.graph.forest.Forest" target="_top" title="Forest structure, i.e. a set of trees" alt="" coords="413,5,545,31"/>
+<area shape="rect" id="node2" href="nipy.algorithms.graph.graph.html#nipy.algorithms.graph.graph.WeightedGraph" target="_top" title="Basic weighted, directed graph class" alt="" coords="183,5,365,31"/>
+<area shape="rect" id="node3" href="nipy.algorithms.graph.graph.html#nipy.algorithms.graph.graph.Graph" target="_top" title="Basic topological (non&#45;weighted) directed Graph class" alt="" coords="5,5,135,31"/>
+</map>

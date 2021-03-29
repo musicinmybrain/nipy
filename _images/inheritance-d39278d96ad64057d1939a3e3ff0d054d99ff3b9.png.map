@@ -1,0 +1,5 @@
+<map id="inheritance7a05f38b18" name="inheritance7a05f38b18">
+<area shape="rect" id="node1" href="#nipy.modalities.fmri.fmristat.outputters.RegressionOutput" target="_top" title="A class to output things in GLM passes through arrays of data." alt="" coords="16,55,253,80"/>
+<area shape="rect" id="node2" href="#nipy.modalities.fmri.fmristat.outputters.RegressionOutputList" target="_top" title="A class to output more than one thing" alt="" coords="5,5,264,31"/>
+<area shape="rect" id="node3" href="#nipy.modalities.fmri.fmristat.outputters.TOutput" target="_top" title="Output contrast related to a T contrast from a GLM pass through data." alt="" coords="312,5,491,31"/>
+</map>

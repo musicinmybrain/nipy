@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neuroimaging in Python &#8212; NIPY Documentation</title>
+    <link rel="stylesheet" href="../../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head><body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../../index.html">
+  <img src="../../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../../documentation.html">Documentation</a></li>
+    <li><a href="../index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/project-directory">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+    <li><a class="reference external"
+	href="license.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Coverage Testing</a><ul>
+<li><a class="reference internal" href="#sneeze">Sneeze</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/devel/guidelines/coverage_testing.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="coverage-testing">
+<h1>Coverage Testing<a class="headerlink" href="#coverage-testing" title="Permalink to this headline">¶</a></h1>
+<p>Coverage testing is a technique used to see how much of the code is
+exercised by the unit tests. It is important to remember that a high
+level of coverage is a necessary but not sufficient condition for
+having effective tests. Coverage testing can be useful for identifying
+whole functions or classes which are not tested, or for finding
+certain conditions which are never tested.</p>
+<p>This is an excellent task for <a class="reference external" href="http://nose.readthedocs.org/en/latest">nose</a> - the automated test runner we are
+using.  Nose can run the <a class="reference external" href="http://nedbatchelder.com/code/modules/coverage.html">python coverage tester</a>.  First make sure
+you have the coverage tester installed on your system.  Download the
+tarball from the link, extract and install <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span>
+<span class="pre">install</span></code>. Or on Ubuntu you can install from apt-get: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span>
+<span class="pre">install</span> <span class="pre">python-coverage</span></code>.</p>
+<p>Run nose with coverage testing arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">-</span><span class="n">sv</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">coverage</span> <span class="n">path_to_code</span>
+</pre></div>
+</div>
+<p>For example, this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">-</span><span class="n">sv</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">coverage</span> <span class="n">test_coordinate_map</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>will report the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span>                                            <span class="n">Stmts</span>   <span class="n">Exec</span>  <span class="n">Cover</span>   <span class="n">Missing</span>
+<span class="o">-----------------------------------------------------------------------------</span>
+<span class="n">nipy</span>                                       <span class="mi">21</span>     <span class="mi">14</span>    <span class="mi">66</span><span class="o">%</span>   <span class="mi">70</span><span class="o">-</span><span class="mi">74</span><span class="p">,</span> <span class="mi">88</span><span class="o">-</span><span class="mi">89</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span>                                   <span class="mi">4</span>      <span class="mi">4</span>   <span class="mi">100</span><span class="o">%</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span>                         <span class="mi">8</span>      <span class="mi">8</span>   <span class="mi">100</span><span class="o">%</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">array_coords</span>          <span class="mi">100</span>     <span class="mi">90</span>    <span class="mi">90</span><span class="o">%</span>   <span class="mi">133</span><span class="o">-</span><span class="mi">134</span><span class="p">,</span> <span class="mi">148</span><span class="o">-</span><span class="mi">151</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">222</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">242</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">coordinate_map</span>        <span class="mi">188</span>    <span class="mi">187</span>    <span class="mi">99</span><span class="o">%</span>   <span class="mi">738</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">coordinate_system</span>      <span class="mi">61</span>     <span class="mi">61</span>   <span class="mi">100</span><span class="o">%</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">slices</span>                 <span class="mi">34</span>     <span class="mi">34</span>   <span class="mi">100</span><span class="o">%</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">transforms</span>                        <span class="mi">0</span>      <span class="mi">0</span>   <span class="mi">100</span><span class="o">%</span>
+<span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">affines</span>               <span class="mi">14</span>     <span class="mi">14</span>   <span class="mi">100</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>The coverage report will cover any python source module imported after
+the start of the test.  This can be noisy and difficult to focus on
+the specific module for which you are writing nosetests.  For
+instance, the above report also included coverage of most of
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code>.  To focus the coverage report, you can provide nose with
+the specific package you would like output from using the
+<code class="docutils literal notranslate"><span class="pre">--cover-package</span></code>.  For example, in writing tests for the
+coordinate_map module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">coverage</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">nipy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">coordinate_map</span> <span class="n">test_coordinate_map</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Since that’s a lot to type, I wrote a tool called <code class="docutils literal notranslate"><span class="pre">sneeze</span></code> to that
+simplifies coverage testing with nose.</p>
+<div class="section" id="sneeze">
+<h2>Sneeze<a class="headerlink" href="#sneeze" title="Permalink to this headline">¶</a></h2>
+<p>Sneeze runs nose with coverage testing and reports only the package
+the test module is testing.  It requires the test module follow a
+simple naming convention:</p>
+<ol class="arabic simple">
+<li><p>Prefix <code class="docutils literal notranslate"><span class="pre">test_</span></code></p></li>
+<li><p>The package name you are testing</p></li>
+<li><p>Suffix <code class="docutils literal notranslate"><span class="pre">.py</span></code></p></li>
+</ol>
+<p>For example, the test module for the <code class="docutils literal notranslate"><span class="pre">coordinate_map</span></code> module is
+named <code class="docutils literal notranslate"><span class="pre">test_coordinate_map.py</span></code>.  Then testing coverage is as simple as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sneeze</span><span class="o">.</span><span class="n">py</span> <span class="n">test_coordinate_map</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Sneeze is included in the <code class="docutils literal notranslate"><span class="pre">tools</span></code> directory in the <a class="reference external" href="http://nipy.org/nipy">nipy</a>
+source. Simply run the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> to install sneeze in your local
+bin directory.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2005-2021, Neuroimaging in Python team.
+      Last updated on Mar 29, 2021.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

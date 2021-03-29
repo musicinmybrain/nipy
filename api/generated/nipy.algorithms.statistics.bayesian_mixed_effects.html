@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neuroimaging in Python &#8212; NIPY Documentation</title>
+    <link rel="stylesheet" href="../../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="algorithms.statistics.bench.bench_intvol" href="nipy.algorithms.statistics.bench.bench_intvol.html" />
+    <link rel="prev" title="algorithms.slicetiming.timefuncs" href="nipy.algorithms.slicetiming.timefuncs.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head><body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../../index.html">
+  <img src="../../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.statistics.bench.bench_intvol.html" title="algorithms.statistics.bench.bench_intvol"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.slicetiming.timefuncs.html" title="algorithms.slicetiming.timefuncs"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U">API</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../../documentation.html">Documentation</a></li>
+    <li><a href="../../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/project-directory">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+    <li><a class="reference external"
+	href="license.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">algorithms.statistics.bayesian_mixed_effects</a><ul>
+<li><a class="reference internal" href="#module-nipy.algorithms.statistics.bayesian_mixed_effects">Module: <code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms.statistics.bayesian_mixed_effects</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="nipy.algorithms.slicetiming.timefuncs.html"
+                        title="previous chapter">algorithms.slicetiming.timefuncs</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="nipy.algorithms.statistics.bench.bench_intvol.html"
+                        title="next chapter">algorithms.statistics.bench.bench_intvol</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/api/generated/nipy.algorithms.statistics.bayesian_mixed_effects.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="algorithms-statistics-bayesian-mixed-effects">
+<h1>algorithms.statistics.bayesian_mixed_effects<a class="headerlink" href="#algorithms-statistics-bayesian-mixed-effects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-nipy.algorithms.statistics.bayesian_mixed_effects">
+<span id="module-algorithms-statistics-bayesian-mixed-effects"></span><h2>Module: <code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms.statistics.bayesian_mixed_effects</span></code><a class="headerlink" href="#module-nipy.algorithms.statistics.bayesian_mixed_effects" title="Permalink to this headline">¶</a></h2>
+<p>Generic implementation of multiple regression analysis under noisy
+measurements.</p>
+<dl class="function">
+<dt id="nipy.algorithms.statistics.bayesian_mixed_effects.two_level_glm">
+<code class="sig-prename descclassname">nipy.algorithms.statistics.bayesian_mixed_effects.</code><code class="sig-name descname">two_level_glm</code><span class="sig-paren">(</span><em class="sig-param">y</em>, <em class="sig-param">vy</em>, <em class="sig-param">X</em>, <em class="sig-param">niter=10</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.statistics.bayesian_mixed_effects.two_level_glm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inference of a mixed-effect linear model using the variational
+Bayes algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">array-like</span></dt><dd><p>Array of observations. Shape should be (n, …) where n is the
+number of independent observations per unit.</p>
+</dd>
+<dt><strong>vy</strong><span class="classifier">array-like</span></dt><dd><p>First-level variances associated with the observations. Should
+be of the same shape as Y.</p>
+</dd>
+<dt><strong>X</strong><span class="classifier">array-like</span></dt><dd><p>Second-level design matrix. Shape should be (n, p) where n is
+the number of observations per unit, and p is the number of
+regressors.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>beta</strong><span class="classifier">array-like</span></dt><dd><p>Effect estimates (posterior means)</p>
+</dd>
+<dt><strong>s2</strong><span class="classifier">array-like</span></dt><dd><p>Variance estimates. The posterior variance matrix of beta[:, i]
+may be computed by s2[:, i] * inv(X.T * X)</p>
+</dd>
+<dt><strong>dof</strong><span class="classifier">float</span></dt><dd><p>Degrees of freedom as per the variational Bayes approximation
+(simply, the number of observations minus the number of
+independent regressors)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.statistics.bench.bench_intvol.html" title="algorithms.statistics.bench.bench_intvol"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.slicetiming.timefuncs.html" title="algorithms.slicetiming.timefuncs"
+             >previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >API</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2005-2021, Neuroimaging in Python team.
+      Last updated on Mar 29, 2021.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

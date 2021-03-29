@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neuroimaging in Python &#8212; NIPY Documentation</title>
+    <link rel="stylesheet" href="../../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Development install on windows" href="windows.html" />
+    <link rel="prev" title="Debian / Ubuntu developer install" href="debian.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head><body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../../index.html">
+  <img src="../../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="windows.html" title="Development install on windows"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="debian.html" title="Debian / Ubuntu developer install"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >Developer Guide</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">Developer installs for different distributions</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../../documentation.html">Documentation</a></li>
+    <li><a href="../index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/project-directory">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+    <li><a class="reference external"
+	href="license.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="debian.html"
+                        title="previous chapter">Debian / Ubuntu developer install</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="windows.html"
+                        title="next chapter">Development install on windows</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/devel/install/fedora.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="fedora-developer-install">
+<h1>Fedora developer install<a class="headerlink" href="#fedora-developer-install" title="Permalink to this headline">¶</a></h1>
+<p>See <a class="reference internal" href="../../users/installation.html#installation"><span class="std std-ref">Download and Install</span></a></p>
+<p>This assumes a recent Fedora (&gt;=10) version.  It may work for earlier
+versions - see <a class="reference internal" href="../../users/installation.html#installation"><span class="std std-ref">Download and Install</span></a> for requirements.</p>
+<p>This page may also hold for Fedora-based distributions such as
+Mandriva and Centos.</p>
+<p>Run all the <code class="docutils literal notranslate"><span class="pre">yum</span> <span class="pre">install</span></code> commands as root.</p>
+<p>Requirements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">gcc</span><span class="o">-</span><span class="n">c</span><span class="o">++</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">devel</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">scipy</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">sympy</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">atlas</span><span class="o">-</span><span class="n">devel</span>
+</pre></div>
+</div>
+<p>Options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">ipython</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">matplotlib</span>
+</pre></div>
+</div>
+<p>For getting the code via version control:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span>
+</pre></div>
+</div>
+<p>Then follow the instructions at <a class="reference internal" href="../development_quickstart.html#trunk-download"><span class="std std-ref">Submitting a patch</span></a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="windows.html" title="Development install on windows"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="debian.html" title="Debian / Ubuntu developer install"
+             >previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >Developer Guide</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >Developer installs for different distributions</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2005-2021, Neuroimaging in Python team.
+      Last updated on Mar 29, 2021.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

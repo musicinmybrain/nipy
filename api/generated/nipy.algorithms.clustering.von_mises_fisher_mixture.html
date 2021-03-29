@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neuroimaging in Python &#8212; NIPY Documentation</title>
+    <link rel="stylesheet" href="../../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="algorithms.diagnostics.commands" href="nipy.algorithms.diagnostics.commands.html" />
+    <link rel="prev" title="algorithms.clustering.utils" href="nipy.algorithms.clustering.utils.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head><body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../../index.html">
+  <img src="../../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.diagnostics.commands.html" title="algorithms.diagnostics.commands"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.clustering.utils.html" title="algorithms.clustering.utils"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U">API</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../../documentation.html">Documentation</a></li>
+    <li><a href="../../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/project-directory">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+    <li><a class="reference external"
+	href="license.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">algorithms.clustering.von_mises_fisher_mixture</a><ul>
+<li><a class="reference internal" href="#module-algorithms-clustering-von-mises-fisher-mixture">Module: <code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms.clustering.von_mises_fisher_mixture</span></code></a></li>
+<li><a class="reference internal" href="#class">Class</a></li>
+<li><a class="reference internal" href="#vonmisesmixture"><code class="xref py py-class docutils literal notranslate"><span class="pre">VonMisesMixture</span></code></a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="nipy.algorithms.clustering.utils.html"
+                        title="previous chapter">algorithms.clustering.utils</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="nipy.algorithms.diagnostics.commands.html"
+                        title="next chapter">algorithms.diagnostics.commands</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/api/generated/nipy.algorithms.clustering.von_mises_fisher_mixture.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="algorithms-clustering-von-mises-fisher-mixture">
+<h1>algorithms.clustering.von_mises_fisher_mixture<a class="headerlink" href="#algorithms-clustering-von-mises-fisher-mixture" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-algorithms-clustering-von-mises-fisher-mixture">
+<h2>Module: <code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms.clustering.von_mises_fisher_mixture</span></code><a class="headerlink" href="#module-algorithms-clustering-von-mises-fisher-mixture" title="Permalink to this headline">¶</a></h2>
+<p>Inheritance diagram for <code class="docutils literal notranslate"><span class="pre">nipy.algorithms.clustering.von_mises_fisher_mixture</span></code>:</p>
+<div class="graphviz"><img src="../../_images/inheritance-336974a76b5a7819e65359e14ff13bbc97c23721.png" alt="Inheritance diagram of nipy.algorithms.clustering.von_mises_fisher_mixture" usemap="#inheritanceeb7a6e7307" class="inheritance graphviz" /></div>
+<map id="inheritanceeb7a6e7307" name="inheritanceeb7a6e7307">
+<area shape="rect" id="node1" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture" target="_top" title="Model for Von Mises mixture distribution with fixed variance" alt="" coords="5,5,344,31"/>
+</map><span class="target" id="module-nipy.algorithms.clustering.von_mises_fisher_mixture"></span><p>Implementation of Von-Mises-Fisher Mixture models,
+i.e. the equaivalent of mixture of Gaussian on the sphere.</p>
+<p>Author: Bertrand Thirion, 2010-2011</p>
+</div>
+<div class="section" id="class">
+<h2>Class<a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="vonmisesmixture">
+<h2><a class="reference internal" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture" title="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture"><code class="xref py py-class docutils literal notranslate"><span class="pre">VonMisesMixture</span></code></a><a class="headerlink" href="#vonmisesmixture" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture">
+<em class="property">class </em><code class="sig-prename descclassname">nipy.algorithms.clustering.von_mises_fisher_mixture.</code><code class="sig-name descname">VonMisesMixture</code><span class="sig-paren">(</span><em class="sig-param">k</em>, <em class="sig-param">precision</em>, <em class="sig-param">means=None</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">null_class=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Model for Von Mises mixture distribution with fixed variance
+on a two-dimensional sphere</p>
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">k</em>, <em class="sig-param">precision</em>, <em class="sig-param">means=None</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">null_class=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize Von Mises mixture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>k: int,</strong></dt><dd><p>number of components</p>
+</dd>
+<dt><strong>precision: float,</strong></dt><dd><p>the fixed precision parameter</p>
+</dd>
+<dt><strong>means: array of shape(self.k, 3), optional</strong></dt><dd><p>input component centers</p>
+</dd>
+<dt><strong>weights: array of shape(self.k), optional</strong></dt><dd><p>input components weights</p>
+</dd>
+<dt><strong>null_class: bool, optional</strong></dt><dd><p>Inclusion of a null class within the model
+(related to k=0)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.density_per_component">
+<code class="sig-name descname">density_per_component</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.density_per_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the per-component density of the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: array fo shape(n,3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>like: array of shape(n, self.k), with non-neagtive values</strong></dt><dd><p>the density</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.estimate">
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">maxiter=100</em>, <em class="sig-param">miniter=1</em>, <em class="sig-param">bias=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.estimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return average log density across samples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: array of shape (n,3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+<dt><strong>maxiter</strong><span class="classifier">int, optional</span></dt><dd><p>maximum number of iterations of the algorithms</p>
+</dd>
+<dt><strong>miniter</strong><span class="classifier">int, optional</span></dt><dd><p>minimum number of iterations</p>
+</dd>
+<dt><strong>bias</strong><span class="classifier">array of shape(n), optional</span></dt><dd><p>prior probability of being in a non-null class</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ll</strong><span class="classifier">float</span></dt><dd><p>average (across samples) log-density</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.estimate_means">
+<code class="sig-name descname">estimate_means</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">z</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.estimate_means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate and set means from <cite>x</cite> and <cite>z</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: array fo shape(n,3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+<dt><strong>z: array of shape(self.k)</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.estimate_weights">
+<code class="sig-name descname">estimate_weights</code><span class="sig-paren">(</span><em class="sig-param">z</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.estimate_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate and set weights from <cite>z</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>z: array of shape(self.k)</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.log_density_per_component">
+<code class="sig-name descname">log_density_per_component</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.log_density_per_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the per-component density of the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: array fo shape(n,3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>like: array of shape(n, self.k), with non-neagtive values</strong></dt><dd><p>the density</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.log_weighted_density">
+<code class="sig-name descname">log_weighted_density</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.log_weighted_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return log weighted density</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: array fo shape(n,3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>log_like: array of shape(n, self.k)</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.mixture_density">
+<code class="sig-name descname">mixture_density</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.mixture_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return mixture density</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: array fo shape(n,3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>like: array of shape(n)</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.responsibilities">
+<code class="sig-name descname">responsibilities</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.responsibilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return responsibilities</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: array fo shape(n,3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>resp: array of shape(n, self.k)</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.show">
+<code class="sig-name descname">show</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualization utility</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: array of shape (n, 3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Uses <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.weighted_density">
+<code class="sig-name descname">weighted_density</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.VonMisesMixture.weighted_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return weighted density</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: array shape(n,3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>like: array</strong></dt><dd><p>of shape(n, self.k)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.estimate_robust_vmm">
+<code class="sig-prename descclassname">nipy.algorithms.clustering.von_mises_fisher_mixture.</code><code class="sig-name descname">estimate_robust_vmm</code><span class="sig-paren">(</span><em class="sig-param">k</em>, <em class="sig-param">precision</em>, <em class="sig-param">null_class</em>, <em class="sig-param">x</em>, <em class="sig-param">ninit=10</em>, <em class="sig-param">bias=None</em>, <em class="sig-param">maxiter=100</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.estimate_robust_vmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the best von_mises mixture after severla initialization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>k: int, number of classes</strong></dt><dd></dd>
+<dt><strong>precision: float, priori precision parameter</strong></dt><dd></dd>
+<dt><strong>null class: bool, optional,</strong></dt><dd><p>should a null class be included or not</p>
+</dd>
+<dt><strong>x: array fo shape(n,3)</strong></dt><dd><p>input data, should be on the unit sphere</p>
+</dd>
+<dt><strong>ninit: int, optional,</strong></dt><dd><p>number of iterations</p>
+</dd>
+<dt><strong>bias: array of shape(n), optional</strong></dt><dd><p>prior probability of being in a non-null class</p>
+</dd>
+<dt><strong>maxiter: int, optional,</strong></dt><dd><p>maximum number of iterations after each initialization</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.example_cv_nonoise">
+<code class="sig-prename descclassname">nipy.algorithms.clustering.von_mises_fisher_mixture.</code><code class="sig-name descname">example_cv_nonoise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.example_cv_nonoise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.example_noisy">
+<code class="sig-prename descclassname">nipy.algorithms.clustering.von_mises_fisher_mixture.</code><code class="sig-name descname">example_noisy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.example_noisy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.select_vmm">
+<code class="sig-prename descclassname">nipy.algorithms.clustering.von_mises_fisher_mixture.</code><code class="sig-name descname">select_vmm</code><span class="sig-paren">(</span><em class="sig-param">krange</em>, <em class="sig-param">precision</em>, <em class="sig-param">null_class</em>, <em class="sig-param">x</em>, <em class="sig-param">ninit=10</em>, <em class="sig-param">bias=None</em>, <em class="sig-param">maxiter=100</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.select_vmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the best von_mises mixture after severla initialization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>krange: list of ints,</strong></dt><dd><p>number of classes to consider</p>
+</dd>
+<dt><strong>precision:</strong></dt><dd></dd>
+<dt><strong>null class:</strong></dt><dd></dd>
+<dt><strong>x: array fo shape(n,3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+<dt><strong>ninit: int, optional,</strong></dt><dd><p>number of iterations</p>
+</dd>
+<dt><strong>maxiter: int, optional,</strong></dt><dd></dd>
+<dt><strong>bias: array of shape(n),</strong></dt><dd><p>a prior probability of not being in the null class</p>
+</dd>
+<dt><strong>verbose: Bool, optional</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.select_vmm_cv">
+<code class="sig-prename descclassname">nipy.algorithms.clustering.von_mises_fisher_mixture.</code><code class="sig-name descname">select_vmm_cv</code><span class="sig-paren">(</span><em class="sig-param">krange</em>, <em class="sig-param">precision</em>, <em class="sig-param">x</em>, <em class="sig-param">null_class</em>, <em class="sig-param">cv_index</em>, <em class="sig-param">ninit=5</em>, <em class="sig-param">maxiter=100</em>, <em class="sig-param">bias=None</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.select_vmm_cv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the best von_mises mixture after severla initialization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>krange: list of ints,</strong></dt><dd><p>number of classes to consider</p>
+</dd>
+<dt><strong>precision: float,</strong></dt><dd><p>precision parameter of the von-mises densities</p>
+</dd>
+<dt><strong>x: array fo shape(n, 3)</strong></dt><dd><p>should be on the unit sphere</p>
+</dd>
+<dt><strong>null class: bool, whether a null class should be included or not</strong></dt><dd></dd>
+<dt><strong>cv_index: set of indices for cross validation</strong></dt><dd></dd>
+<dt><strong>ninit: int, optional,</strong></dt><dd><p>number of iterations</p>
+</dd>
+<dt><strong>maxiter: int, optional,</strong></dt><dd></dd>
+<dt><strong>bias: array of shape (n), prior</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nipy.algorithms.clustering.von_mises_fisher_mixture.sphere_density">
+<code class="sig-prename descclassname">nipy.algorithms.clustering.von_mises_fisher_mixture.</code><code class="sig-name descname">sphere_density</code><span class="sig-paren">(</span><em class="sig-param">npoints</em><span class="sig-paren">)</span><a class="headerlink" href="#nipy.algorithms.clustering.von_mises_fisher_mixture.sphere_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the points and area of a npoints**2 points sampled on a sphere</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>s</strong><span class="classifier">array of shape(npoints ** 2, 3)</span></dt><dd></dd>
+<dt><strong>area: array of shape(npoints)</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.diagnostics.commands.html" title="algorithms.diagnostics.commands"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="nipy.algorithms.clustering.utils.html" title="algorithms.clustering.utils"
+             >previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../documentation.html" >NIPY documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >API</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2005-2021, Neuroimaging in Python team.
+      Last updated on Mar 29, 2021.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>
