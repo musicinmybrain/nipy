@@ -12,6 +12,7 @@
 # All configuration values have a default value; values that are commented out
 # serve to show the default value.
 
+import doctest
 import sys, os
 from importlib import import_module
 
@@ -40,7 +41,6 @@ needs_sphinx = '1.0'
 extensions = [
     'texext.mathcode',
     'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
     'sphinx.ext.mathjax',
     'sphinx.ext.autosummary',
     'texext.math_dollar',
@@ -229,10 +229,9 @@ except ImportError:
     vtk = None
 """
 
-_sedd = sphinx.ext.doctest.doctest
-doctest_default_flags = (_sedd.ELLIPSIS | _sedd.IGNORE_EXCEPTION_DETAIL |
-                         _sedd.DONT_ACCEPT_TRUE_FOR_1 |
-                         _sedd.NORMALIZE_WHITESPACE)
+doctest_default_flags = (doctest.ELLIPSIS | doctest.IGNORE_EXCEPTION_DETAIL |
+                         doctest.DONT_ACCEPT_TRUE_FOR_1 |
+                         doctest.NORMALIZE_WHITESPACE)
 
 # Numpy extensions
 # ----------------
